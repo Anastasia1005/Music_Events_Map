@@ -6,13 +6,19 @@
         xmlns:local="clr-namespace:Music_Map"
         xmlns:WindowsPresentation="clr-namespace:GMap.NET.WindowsPresentation;assembly=GMap.NET.WindowsPresentation" x:Class="Music_Map.MainWindow"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="928">
+        Title="MainWindow" Height="453" Width="928">
     <Grid>
-        <WindowsPresentation:GMapControl x:Name="Map" Height="390" Width="570" Loaded="Map_Loaded" Margin="210,15,9,0" VerticalAlignment="Top" HorizontalAlignment="Right"/>
-        <Button Content="Создать маркер" HorizontalAlignment="Left" Margin="219,389,0,0" VerticalAlignment="Top" Width="100" Click="Button_Click"/>
-        <TextBox x:Name="artistTextBox" HorizontalAlignment="Left" Height="30" Margin="10,45,0,0" TextWrapping="Wrap" Text="Twenty One Pilots" VerticalAlignment="Top" Width="229" VerticalContentAlignment="Center"/>
-        <Button x:Name="SearchDataBut" Content="Поиск" HorizontalAlignment="Left" Margin="244,45,0,0" VerticalAlignment="Top" Width="75" Click="SearchDataBut_Click" Height="30"/>
+        <WindowsPresentation:GMapControl x:Name="Map" Height="390" Width="570" Loaded="Map_Loaded" Margin="210,15,9,0" VerticalAlignment="Top" HorizontalAlignment="Right" MouseLeftButtonDown="Map_MouseLeftButtonDown"/>
+        <TextBox x:Name="artistTextBox" HorizontalAlignment="Left" Height="30" Margin="10,45,0,0" TextWrapping="Wrap" Text="Twenty One Pilots" VerticalAlignment="Top" Width="230" VerticalContentAlignment="Center"/>
+        <Button x:Name="SearchDataBut" Content="Поиск" HorizontalAlignment="Left" Margin="245,45,0,0" VerticalAlignment="Top" Width="75" Click="SearchDataBut_Click" Height="30"/>
         <Label Content="Кого ищем?" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="30" Width="100" VerticalContentAlignment="Center"/>
+        <TextBlock x:Name="eventDataTxtBlock" HorizontalAlignment="Left" Margin="10,181,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="222" Width="310" Background="GhostWhite"/>
+        <Label Content="Сортировка по стране и/или городу:" HorizontalAlignment="Left" Margin="10,80,0,0" VerticalAlignment="Top" Width="230"/>
+        <TextBox x:Name="countryFiltrTxtBox" HorizontalAlignment="Left" Height="30" Margin="66,111,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="174" VerticalContentAlignment="Center"/>
+        <Label Content="Страна:" HorizontalAlignment="Left" Margin="10,111,0,0" VerticalAlignment="Top" Height="30" Width="51" VerticalContentAlignment="Center"/>
+        <TextBox x:Name="cityFiltrTxtBox" HorizontalAlignment="Left" Height="30" Margin="66,147,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="174" VerticalContentAlignment="Center"/>
+        <Label Content="Город:" HorizontalAlignment="Left" Margin="10,147,0,0" VerticalAlignment="Top" Height="30" Width="51" VerticalContentAlignment="Center"/>
+        <Button x:Name="VenueFiltrBut" Content="Сортировка" HorizontalAlignment="Left" Margin="245,129,0,0" VerticalAlignment="Top" Width="75" Height="30" Click="VenueFiltrBut_Click"/>
 
     </Grid>
 </Window>

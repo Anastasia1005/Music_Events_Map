@@ -6,12 +6,13 @@ using System.Threading.Tasks;
 
 namespace Music_Map.Classes
 {
+    // Запрос, который дал сайт json2csharp
     // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse);
     public class Options
     {
         public bool display_listen_unit { get; set; }
     }
-
+    #region Классы, которые создал сайт json2csharp
     public class Artist
     {
         public string id { get; set; }
@@ -60,4 +61,5 @@ namespace Music_Map.Classes
         public string artist_id { get; set; }
         public object on_sale_datetime { get; set; }
     }
+    #endregion
 }

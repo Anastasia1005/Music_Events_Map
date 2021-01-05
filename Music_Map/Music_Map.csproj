@@ -132,7 +132,6 @@
     <Compile Include="Classes\EventData.cs" />
     <Compile Include="Classes\JsonClasses.cs" />
     <Compile Include="Classes\JsonParser.cs" />
-    <Compile Include="Classes\Location.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>

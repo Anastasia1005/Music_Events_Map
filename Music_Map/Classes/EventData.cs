@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,20 +17,28 @@ namespace Music_Map.Classes
         public Venue Venue { get; set; }
         public string City { get; set; }
         public string Country { get; set; }
-        public string Description { get; set; }
+        public string EventName { get; set; }
         public PointLatLng GeoPoint { get; set; }
+        public string Description { get; set; }
         public DateTime Date { get; set; }
-        
-        public EventData(Artist artist, Venue venue, string city, string country, string latitude, string longitude,
-                                                     string description, string date)
+        public List<string> Lineup { get; set; } = new List<string>();
+
+        public EventData(Artist artist, Venue venue, List<string> lineup, string description, DateTime date)
         {
             this.Artist = artist;
             this.Venue = venue;
-            this.City = city;
-            this.Country = country;
+            this.City = venue.city;
+            this.Country = venue.country;
+            this.EventName = venue.name;
+            this.GeoPoint = new PointLatLng(Convert.ToDouble(venue.latitude, CultureInfo.InvariantCulture),
+                                            Convert.ToDouble(venue.longitude, CultureInfo.InvariantCulture));
             this.Description = description;
-            this.GeoPoint = new PointLatLng(Convert.ToDouble(latitude), Convert.ToDouble(longitude));
-            this.Date = DateTime.Parse(date);
+            this.Date = date;
+
+            foreach (string artistName in lineup)
+            {
+                this.Lineup.Add(artistName);
+            }
         }
 
         /// <summary> Возвращает позицию события в виде координат </summary>
@@ -47,7 +56,9 @@ namespace Music_Map.Classes
                 {
                     Width = 30, // ширина маркера
                     Height = 30, // высота маркера
-                    ToolTip = "Кто: " + this.Artist + "\nГде: " + this.Venue + "\nКогда: " + this.Date.ToString(), // всплывающая подсказка
+                    ToolTip = "Кто: " + this.Artist.name +
+                              "\nГде: " + this.Country + ", " + this.City + ", " + this.EventName +
+                              "\nКогда: " + this.Date.ToString(), // всплывающая подсказка
                     Source = new BitmapImage(new Uri("pack://application:,,,/Resources/to_icon.png")) // картинка
                 },
                 Position = this.GeoPoint

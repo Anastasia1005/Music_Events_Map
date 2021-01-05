@@ -25,7 +25,8 @@ namespace Music_Map
     /// </summary>
     public partial class MainWindow : Window
     {
-        ApiClient apiClient = new ApiClient();
+        readonly ApiClient apiClient = new ApiClient();
+        List<EventData> eventList = new List<EventData>();
 
         public MainWindow()
         {
@@ -47,7 +48,7 @@ namespace Music_Map
             //установка зума карты
             Map.MinZoom = 2;
             Map.MaxZoom = 17;
-            Map.Zoom = 15;
+            Map.Zoom = 3;
             //установка фокуса карты
             Map.Position = new PointLatLng(55.012823, 82.950359);
 
@@ -63,25 +64,36 @@ namespace Music_Map
             PointLatLng point = new PointLatLng(0, 0);
             DateTime date = DateTime.Now;
 
-            CreateEvent("Queen", "Моя свадьба", date, point);
+            MessageBox.Show("Удоли");
+            //CreateEvent("Queen", "Моя свадьба", date, point);
         }
 
         // Метод, создающий событие на карте
         // Создаёт экземпляр класса Location и вызывает его метод GetMarker(), чтобы поставить метку на карте
         // Картинка метки лежит в папке Resources
-        private void CreateEvent(string artist, string loc, DateTime date, PointLatLng geoPoint)
+        //private void CreateEvent(string artist, string loc, DateTime date, PointLatLng geoPoint)
+        //{
+        //    // Указываю класс так, потому что без "Classes.", визуалка думает что я создаю не класс, который создала я, а класс, который уже есть в системе
+        //    Classes.Location locatoin = new Classes.Location(artist, loc, date, geoPoint);
+        //    // Метка ставится на карту
+        //    Map.Markers.Add(locatoin.GetMarker());
+        //    // Карта фокусируется на метке
+        //    Map.Position = locatoin.GetFocus();
+        //}
+
+        private void CreateEvents(List<EventData> events)
         {
-            // Указываю класс так, потому что без "Classes.", визуалка думает что я создаю не класс, который создала я, а класс, который уже есть в системе
-            Classes.Location locatoin = new Classes.Location(artist, loc, date, geoPoint);
-            // Метка ставится на карту
-            Map.Markers.Add(locatoin.GetMarker());
-            // Карта фокусируется на метке
-            Map.Position = locatoin.GetFocus();
+            foreach (EventData eventData in events)
+            {
+                eventList.Add(eventData);
+                Map.Markers.Add(eventData.GetMarker());
+            }
+            Map.Position = events[0].GetFocus();
         }
 
         private void SearchDataBut_Click(object sender, RoutedEventArgs e)
         {
-            apiClient.LoadEventData(artistTextBox.Text);
+            CreateEvents(apiClient.LoadEventData(artistTextBox.Text));
         }
     }
 }

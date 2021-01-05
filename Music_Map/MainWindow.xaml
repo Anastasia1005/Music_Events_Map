@@ -1,17 +1,18 @@
 ﻿<Window
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Music_Map"
         xmlns:WindowsPresentation="clr-namespace:GMap.NET.WindowsPresentation;assembly=GMap.NET.WindowsPresentation" x:Class="Music_Map.MainWindow"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="928">
     <Grid>
-        <WindowsPresentation:GMapControl x:Name="Map" Height="390" Width="570" Loaded="Map_Loaded" Margin="210,15,9,0" VerticalAlignment="Top" Background="Gray"/>
-        <Button Content="Создать маркер" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="100" Click="Button_Click"/>
-        <TextBox x:Name="artistTextBox" HorizontalAlignment="Left" Height="23" Margin="10,35,0,0" TextWrapping="Wrap" Text="Twenty One Pilots" VerticalAlignment="Top" Width="120"/>
-        <Button x:Name="SearchDataBut" Content="Поиск" HorizontalAlignment="Left" Margin="115,10,0,0" VerticalAlignment="Top" Width="75" Click="SearchDataBut_Click"/>
+        <WindowsPresentation:GMapControl x:Name="Map" Height="390" Width="570" Loaded="Map_Loaded" Margin="210,15,9,0" VerticalAlignment="Top" HorizontalAlignment="Right"/>
+        <Button Content="Создать маркер" HorizontalAlignment="Left" Margin="219,389,0,0" VerticalAlignment="Top" Width="100" Click="Button_Click"/>
+        <TextBox x:Name="artistTextBox" HorizontalAlignment="Left" Height="30" Margin="10,45,0,0" TextWrapping="Wrap" Text="Twenty One Pilots" VerticalAlignment="Top" Width="229" VerticalContentAlignment="Center"/>
+        <Button x:Name="SearchDataBut" Content="Поиск" HorizontalAlignment="Left" Margin="244,45,0,0" VerticalAlignment="Top" Width="75" Click="SearchDataBut_Click" Height="30"/>
+        <Label Content="Кого ищем?" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="30" Width="100" VerticalContentAlignment="Center"/>
 
     </Grid>
 </Window>

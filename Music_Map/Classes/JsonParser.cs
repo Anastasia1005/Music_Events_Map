@@ -12,8 +12,22 @@ namespace Music_Map.Classes
         public List<EventData> ParseEventData(string data)
         {
             List<Root> myDeserializedClass = JsonConvert.DeserializeObject<List<Root>>(data);
+            List <EventData> resultList = new List<EventData>();
 
-            return new List<EventData>();
+            foreach (Root dataList in myDeserializedClass)
+            {
+                EventData eventData = new EventData(
+                    artist:      myDeserializedClass[0].artist,
+                    venue:       dataList.venue,
+                    lineup:      dataList.lineup,
+                    description: dataList.description,
+                    date:        dataList.datetime
+                    );
+
+                resultList.Add(eventData);
+            }
+
+            return resultList;
         }
     }
 }
